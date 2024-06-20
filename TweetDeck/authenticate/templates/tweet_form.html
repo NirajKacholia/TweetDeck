@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{%block title%}
+TweetDeck Clone
+{%endblock%}
+
+{% block style %}
+
+.module-border-wrap {
+    border-radius:10px;
+    margin:auto;
+    width:fit-content;
+    padding: 0.5rem;
+    position: relative;
+    background: linear-gradient(to right, #f00, #ff0, #00f);
+    box-sizing:border-box;
+  }
+  
+    .container {
+    border-radius: 8px; 
+    width: 700px; 
+    background-color: var(--bs-body-bg);
+    padding:1rem;
+    }
+
+    label{
+        display:inline;
+        font-weight:bold;
+    }
+
+    textarea {
+      width: 100%; /* Ensure textarea fills container width */
+    }
+
+    
+    {% endblock %}
+{% block content%}
+
+{% if form.instance.pk %}
+<h1>Edit Form</h1>
+
+{% else %}
+<h1>Create Form</h1>
+{% endif %}
+<div class="module-border-wrap">
+<div class='container'>
+<form method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+{{form.as_p}}
+<button type="submit" class="btn btn-primary" style="display:block; margin:auto">Submit</button>
+</form>
+</div>
+</div>
+{% endblock %}
